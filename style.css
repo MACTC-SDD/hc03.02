@@ -1,5 +1,5 @@
 html, body {
-    	user-select: none;
+	user-select: none;
 	height: 100%;
 	width: 100%;
 	margin: 0;
@@ -39,7 +39,7 @@ html, body {
 }
 
 #i_mute {
-    	height: 4em;
+	height: 4em;
 	background: #ffffff;
 	border-radius: 10%;
 }
