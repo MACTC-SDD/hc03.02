@@ -45,11 +45,11 @@
 	<script>
 var animation = new DVDClassicAnimation
 (
-		document.getElementById('media'),
-		document.getElementById('container'),
-		new Int16Array(2),
-		new Int16Array(2),
-		document.location.href + "/audio/water_droplet.mp3"
+	document.getElementById('media'),
+	document.getElementById('container'),
+	new Int16Array(2),
+	new Int16Array(2),
+	document.location.href + "/audio/water_droplet.mp3"
 );
 
 animation.domFPSOutput = document.getElementById('fps');
@@ -60,32 +60,32 @@ var i_mute = document.getElementById('i_mute');
 
 i_velocity.onchange = async () =>
 {
-		animation.velocity = new Int16Array([
-				i_velocity.value,
-				i_velocity.value
-		]);
-		document.getElementById('velocity').innerText = `
-				Velocity: ${i_velocity.value}
-		`;
+	animation.velocity = new Int16Array([
+		i_velocity.value,
+		i_velocity.value
+	]);
+	document.getElementById('velocity').innerText = `
+		Velocity: ${i_velocity.value}
+	`;
 };
 
 i_delay.onchange = async () =>
 {
-		animation.start(i_delay.value);
-		document.getElementById('delay').innerText = `
-				Delay (ms): ${i_delay.value}
-		`;
+	animation.start(i_delay.value);
+	document.getElementById('delay').innerText = `
+		Delay (ms): ${i_delay.value}
+	`;
 };
 
 i_mute.onclick = async () =>
 {
-		if (animation.sfxMuted) {
-				animation.sfxMuted = false;
-				i_mute.src = "images/speaker.png";
-		} else {
-				animation.sfxMuted = true;
-				i_mute.src = "images/mute.png";
-		}
+	if (animation.sfxMuted) {
+		animation.sfxMuted = false;
+		i_mute.src = "images/speaker.png";
+	} else {
+		animation.sfxMuted = true;
+		i_mute.src = "images/mute.png";
+	}
 };
 
 i_velocity.onchange();

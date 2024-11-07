@@ -75,10 +75,10 @@ class DVDClassicAnimation {
 		this.#_sfxSource = undefined;
 
 		// Fetch audio asset via ArrayBuffer XHR request;
-		var xhr = window.XMLHttpRequest ? 
-			new XMLHttpRequest() 
-				: 
-			new ActiveXObject("Microsoft.XMLHTTP");
+		if (!window.XMLHttpRequest)
+			return;
+
+		var xhr = new XMLHttpRequest();
 
 		xhr.open(
 			"GET",
