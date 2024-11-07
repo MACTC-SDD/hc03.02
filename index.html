@@ -1,40 +1,96 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>DVD Classic</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <link rel="icon" type="image/png" href="images/favicon.png"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>
+    		DVD Classic
+    	</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-
 <body>
-  <div id="container">
-    <img id="image" src="images/dvd-logo.png">
-  </div>
+	<div id="container">
+		<img id="media" src="images/dvd-logo.png">
+	</div>
+	<div id="controls">
+    		<div>
+        		<span id="velocity"></span>
+        		<br>
+			<input  type ="range"
+				id   ="i_velocity"
+				name ="velocity"
+				min  ="0"
+				max  ="20"
+				value="2"
+				step ="1">
+		</div>
+    		<div>
+        		<span id="delay"></span>
+			<br>
+			<input  type ="range"
+				id   ="i_delay"
+				name ="delay"
+				min  ="1"
+				max  ="100"
+				value="10"
+				step ="1">
+		</div>
+        	<div><img id="i_mute" src="images/mute.png"></div>
+		<div id="fps">
+		</div>
+	</div>
+	<script src="script.js"></script>
+	<script>
 
-  <!-- Load our functions from script.js -->
-  <script src="script.js"></script>
+var animation = new DVDClassicAnimation
+(
+	document.getElementById('media'),
+	document.getElementById('container'),
+	new Int16Array(2),
+	new Int16Array(2),
+	document.location.href + "/audio/water_droplet.mp3"
+);
 
-  <!-- Run this when the page loads -->
-  <script>
-    // The <img> element with our picture in it
-    var img = document.getElementById('image');
+animation.domFPSOutput = document.getElementById('fps');
 
-    // The <div> our image bounces around inside
-    var container = document.getElementById('container');
-    
-    // Start at this location
-    var x = 0, y = 0;
+var i_velocity = document.getElementById('i_velocity');
+var i_delay = document.getElementById('i_delay');
+var i_mute = document.getElementById('i_mute');
 
-    // These affect the speed
-    var xSpeed = 5, ySpeed = 5;
+i_velocity.onchange = async () =>
+{
+	animation.velocity = new Int16Array([
+		i_velocity.value,
+		i_velocity.value
+	]);
+	document.getElementById('velocity').innerText = `
+		Velocity: ${i_velocity.value}
+	`;
+};
 
-    // Run moveImage every 30ms
-    var intervalId = setInterval(moveImage, 30);
-  </script>
-  
+i_delay.onchange = async () =>
+{
+	animation.start(i_delay.value);
+	document.getElementById('delay').innerText = `
+		Delay (ms): ${i_delay.value}
+	`;
+};
+
+i_mute.onclick = async () =>
+{
+	if (animation.sfxMuted) {
+		animation.sfxMuted = false;
+		i_mute.src = "images/speaker.png";
+	} else {
+		animation.sfxMuted = true;
+		i_mute.src = "images/mute.png";
+	}
+};
+
+i_velocity.onchange();
+i_delay.onchange();
+
+	</script>
 </body>
-
 </html>

@@ -1,22 +1,53 @@
-html {
-  height: 100%;
-  width: 100%;
+html, body {
+    	user-select: none;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font: 1.2em monospace;
+	background: #000000;
+	color: #ffffff;
+}
+
+#media {
+	width: 25%;
+}
+
+#container, #controls {
+	position: fixed;
+	width: 90%;
 }
 
 #container {
-  position: relative;
-  overflow: hidden;
-  width: 640px;
-  height: 480px;
+	height: calc(98.75% - 5em);
+	inset: 1.25% 0 0 5%;
+	border: 0 solid transparent;
+	border-radius: 10%;
+	transition: background 1s ease-in-out;
 }
 
-
-#image {
-  position: absolute;
-  width: 150px;
-  margin: auto;
+#controls {
+	display: flex;
+	justify-content: space-around;
+	height: 5em;
+	inset: calc(100% - 5em) 0 0 5%;
 }
 
+#controls > div {
+	align-self: center;
+	text-align: center;
+}
+
+#i_mute {
+    	height: 4em;
+	background: #ffffff;
+	border-radius: 10%;
+}
+
+#i_mute:hover {
+	transform: rotate(10deg);
+	filter: sepia(1);
+}
 
 /* Attributions
 <a href="https://www.freeiconspng.com/img/40963">mute off, sound off icon</a>
