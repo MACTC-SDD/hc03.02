@@ -46,7 +46,7 @@ function setXSpeed(newValue)
 
 function setYSpeed(newValue)
 {
-  xSpeed = Math.abs(ySpeed) / ySpeed * newValue;
+  ySpeed = Math.abs(ySpeed) / ySpeed * newValue;
 }
 
 // Change how long we delay between frames (Stage 6)
