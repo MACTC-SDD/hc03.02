@@ -50,16 +50,16 @@ function setYSpeed(newValue)
 }
 
 // Change how long we delay between frames (Stage 6)
-function resetInterval()
+function resetInterval(slider, display)
 {
   clearInterval(intervalId);
-  intervalId = setInterval(moveImage, Number(delay.value));
-  updateFpsDisp();
+  intervalId = setInterval(moveImage, Number(slider.value));
+  updateFpsDisplay(slider, display);
 }
 
 // Update frames/second display (Stage 6)
-function updateFpsDisp()
+function updateFpsDisplay(slider, display)
 {
-  fpsDisp.innerHTML = Math.floor(1000 / delay.value) + "fps";  
+  display.innerHTML = Math.floor(1000 / slider.value) + "fps";  
 }
 
